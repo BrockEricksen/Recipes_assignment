@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes exam practice assignment</title>
+</head>
+<body>
+    <h1>Edit Recipe:</h1>
+        {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+        {% if messages %}
+        <!-- check if there are any flash messages -->
+        {% for message in messages %}
+        <!-- loop through the flash messages -->
+        <p>{{message}}</p> <!-- display each flash message in a paragraph tag -->
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <a href="/main">back to recipes</a>
+    <a href="/logout">logout</a>
+
+    <form action="/recipe/update/{{recipe.id}}" method="post">
+        <input type="hidden" name="id" value={{recipe.id}}>
+        <label>
+            <span>
+                Name:
+            </span>
+            <input type="text" name="name" value="{{recipe.name}}">
+        </label>
+        <label>
+            <span>
+                Description:
+            </span>
+            <input type="text" name="description" value="{{recipe.description}}">
+        </label>
+        <label>
+            <span>
+                Instructions:
+            </span>
+            <input type="text" name="instructions" value="{{recipe.instructions}}">
+        </label>
+        <label>
+            <span>
+                Date Cooked/Made:
+            </span>
+            <input type="date" name="date_made" value="{{recipe.created_at}}">
+        </label>
+        <label>
+            <span>
+                Under 30 minutes?:
+            </span>
+            <label for="yes">Yes</label>
+            <input type="radio" name="under_30" value="1">
+            <label for="no">No</label>
+            <input type="radio" name="under_30" value="0">
+        </label>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

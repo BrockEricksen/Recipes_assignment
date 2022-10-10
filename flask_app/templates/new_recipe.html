@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes exam practice assignment</title>
+</head>
+<body>
+    <h1>Add a New Recipe:</h1>
+        {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+        {% if messages %}
+        <!-- check if there are any flash messages -->
+        {% for message in messages %}
+        <!-- loop through the flash messages -->
+        <p>{{message}}</p> <!-- display each flash message in a paragraph tag -->
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <a href="/main">back to recipes</a>
+    <a href="/logout" style="padding-left: 20px;">logout</a>
+
+    <form action="/recipe/create" method="post">
+        <label>
+            <span>
+                Name:
+            </span>
+            <input type="text" name="name">
+        </label>
+        <label>
+            <span>
+                Description:
+            </span>
+            <input type="text" name="description">
+        </label>
+        <label>
+            <span>
+                Instructions:
+            </span>
+            <input type="text" name="instructions">
+        </label>
+        <label>
+            <span>
+                Date Cooked/Made:
+            </span>
+            <input type="date" name="date_made">
+        </label>
+        <label>
+            <span>
+                Under 30 minutes?:
+            </span>
+            <label for="yes">Yes</label>
+            <input type="radio" name="under_30" value="1" id="yes">
+            <label for="no">No</label>
+            <input type="radio" name="under_30" value="0" id="no">
+        </label>
+        <input type="hidden" name="user_id" value="{{session['user_id']}}">
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Recipes exam practice assignment</title>
+</head>
+
+<body>
+    <h1>Recipe Share</h1>
+    <div class="main-container">
+        <div class="register">
+            <h1>Register:</h1>
+            {% with messages = get_flashed_messages() %}
+            <!-- declare a variable called messages -->
+            {% if messages %}
+            <!-- check if there are any flash messages -->
+            {% for message in messages %}
+            <!-- loop through the flash messages -->
+            <p>{{message}}</p> <!-- display each flash message in a paragraph tag -->
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form action="/create_user" method="post" class="register-form">
+                <!-- form to create a user and submit info to /create_user route -->
+                <label>
+                    <span>
+                        First Name:
+                    </span>
+                    <input type="text" name="first_name">
+                </label>
+                <label>
+                    <span>
+                        Last Name:
+                    </span>
+                    <input type="text" name="last_name">
+                </label>
+                <label>
+                    <span>
+                        Email:
+                    </span>
+                    <input type="email" name="email">
+                </label>
+                <label>
+                    <span>
+                        Password:
+                    </span>
+                    <input type="password" name="password">
+                </label>
+                <label>
+                    <span>
+                        Confirm Password:
+                    </span>
+                    <input type="password" name="conf_password">
+                </label>
+                <input type="submit" value="Register" class="submit-form">
+            </form>
+        </div>
+
+        <div class="login">
+            <h1>Login:</h1>
+            <form action="/login" method="post" class="login-form">
+                <label for="email">
+                    <span>
+                        Email:
+                    </span>
+                    <input type="email" name="email">
+                </label>
+                <label for="password">
+                    <span>
+                        Password:
+                    </span>
+                    <input type="password" name="password">
+                </label>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

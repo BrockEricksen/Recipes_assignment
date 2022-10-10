@@ -1,0 +1,47 @@
+h1{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.main-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.register{
+    margin: auto;
+    width: 400px;
+    height: 300px;
+    background-color: lightblue;
+}
+
+.login{
+    margin: auto;
+    width: 400px;
+    height: 300px;
+    background-color: lightblue;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

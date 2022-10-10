@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Recipes exam practice assignment</title>
+</head>
+<body>
+    <h1>Welcome, {{user.first_name}}</h1>
+    <h3>All posted recipes:</h3>
+    <a href="/new_recipe">+ Create Recipe</a>
+    <a href="/logout" style="padding-left: 20px;">Logout</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Under 30 minutes</th>
+                <th scope="col">Posted By</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+            <tr>
+                <td>{{recipe.name}}</th> <!-- Name of recipe -->
+                    <td><!-- Was it made by this user (Yes or No) -->
+                        {% if recipe.under_30 == '1': %}
+                        Yes
+                        {% else: %}
+                        No
+                        {% endif %}
+                    </td>
+                <td>{{recipe.owner.first_name}}</td> <!-- Who (name) posted the recipe -->
+                <td><a href="/view_recipe/{{recipe.id}}">view recipe 
+                    {% if recipe.owner.id == user.id: %}
+                    <a href="/edit_recipe/{{recipe.id}}">| edit recipe |</a> <a href="/recipe/destroy/{{recipe.id}}">delete recipe</a> <!-- Actions: view recipe | edit | delete   EDIT AND DELTE ONLY IF USER THAT IS LOGGED IN MADE THE RECIPE-->
+                    {% endif %}</a>
+                </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
